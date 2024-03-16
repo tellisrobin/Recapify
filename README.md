@@ -1,0 +1,4 @@
+RECAPIFY --- AI Summarizer
+
+FRONTEND --- REACT
+BACKEND --- PYTHON FLASK
