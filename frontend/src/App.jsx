@@ -1,19 +1,27 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './Components/Navbar';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Auth from "./Components/Auth.jsx"
+
 
 function App() {
   const [count, setCount] = useState(0)
 
+  // return (
+  //   <>
+  //   <div>
+  //     <Navbar></Navbar>
+  //   </div>  
+  //   </>
+  // )
   return (
-    <>
-    <div>
-      <Navbar></Navbar>
-    </div>
-      
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/home" element={<Navbar />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
