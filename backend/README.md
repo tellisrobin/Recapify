@@ -9,3 +9,5 @@ python -3 -m venv .venv
 
 Install flask
 pip install flask
+
+flask run
