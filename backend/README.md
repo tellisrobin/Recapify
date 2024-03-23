@@ -9,5 +9,7 @@ python -3 -m venv .venv
 
 Install flask
 pip install flask
+pymongo
+python -m pip install "pymongo[srv]"
 
 flask run

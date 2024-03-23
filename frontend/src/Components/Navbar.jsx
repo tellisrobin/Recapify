@@ -1,7 +1,8 @@
-import { Fragment } from 'react';
+import { Fragment,useState,useHistory } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon, UserIcon } from '@heroicons/react/24/outline';
 import reactLogo from  '../assets/react.svg';
+import { useNavigate } from "react-router-dom";
 
 
 const navigation = [
@@ -14,6 +15,16 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  //const history = useHistory();
+  const navigate= useNavigate();
+  // Function to handle sign out
+  const handleSignOut = () => {
+    // Clear user data from local storage
+    localStorage.removeItem("user");
+    // Redirect to the login page
+    navigate('/auth');
+  };
+
   return (
     <Disclosure as="nav" className="bg-gray-800 fixed top-0 left-0 right-0 z-50">
       {({ open }) => (
@@ -105,17 +116,17 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Settings
                           </a>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
+                      <Menu.Item className = " text-center ">
                         {({ active }) => (
                           <a
-                            href="#"
+                            onClick={handleSignOut}
+                            //className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out

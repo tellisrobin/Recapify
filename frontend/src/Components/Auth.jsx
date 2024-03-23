@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
 // UI for login page
 const Auth = () => {
   const [email,setEmail]= useState("");
   const [password,setPassword]= useState("");
-
+  const [user, setUser] = useState();
+  const navigate= useNavigate();
   function validate(){
     return email.length>0 && password.length >0;
   }
@@ -13,7 +15,7 @@ const Auth = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/signup', {
+      const response = await fetch('/api/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -21,7 +23,11 @@ const Auth = () => {
         body: JSON.stringify({ email, password })
       });
       const data = await response.json();
-      console.log(data.message);
+      console.log(data.user);
+      if (response.ok) {
+        localStorage.setItem('user', data.user);
+        navigate('/home');
+      }
     } catch (error) {
       console.error('Error:', error);
     }
@@ -58,7 +64,7 @@ const Auth = () => {
           Don't have an account?{" "}
           <a
             className="text-red-600 hover:underline hover:underline-offset-4"
-            href="#"
+            href="/signup"
           >
             Signup
           </a>
