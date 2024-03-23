@@ -1,8 +1,12 @@
 import React, {useState} from 'react'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [email,setEmail]= useState("");
     const [password,setPassword]= useState("");
+    const [user, setUser] = useState();
+    const navigate= useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
     
@@ -15,6 +19,11 @@ const Signup = () => {
             body: JSON.stringify({ email, password })
           });
           const data = await response.json();
+          console.log(data.user);
+          if (response.ok) {
+            localStorage.setItem('user', data.user);
+            navigate('/home');
+            }
           console.log(data.message);
         } catch (error) {
           console.error('Error:', error);

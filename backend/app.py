@@ -42,7 +42,7 @@ def signUp():
         user = {'email': email, 'password': password}
         users_collection.insert_one(user)
         # flash('Registration successful. You can now log in.', 'success')
-        return jsonify({'message': 'Signup successful'}),200
+        return jsonify({'message': 'Signup successful','user':str(user['email'])}),200
 
 
 @app.route('/signin', methods=['POST'])
@@ -51,7 +51,7 @@ def logIn():
     password=request.json['password']
     user= users_collection.find_one({'email': email,'password':password})
     if user:
-        return jsonify({'message':'Login successful','user':str(user['_id'])}),201    
+        return jsonify({'message':'Login successful','user':str(user['email'])}),201    
         #flash('User already exists.', 'danger')
     else:
         return jsonify({'message': 'Login failed- incorrect email/password'}), 401

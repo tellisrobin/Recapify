@@ -4,6 +4,7 @@ import Auth from './Auth'
 
 const Home = () => {
     const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
        const loggedInUser = localStorage.getItem("user");
        //console.log("loggedInUser:", loggedInUser);
@@ -12,10 +13,15 @@ const Home = () => {
            console.log("Logged USer" +foundUser);
            setUser(foundUser);
          }
+         setIsLoading(false);
      }, []); 
     return (
         <div>
-        {user ? <Navbar /> : <Auth />}
+        {isLoading ? (
+                <div></div>
+            ) : (
+                user ? <Navbar /> : <Auth />
+            )}
         </div>
   )
 }
