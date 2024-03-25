@@ -64,7 +64,7 @@ const Auth = () => {
           Don't have an account?{" "}
           <a
             className="text-red-600 hover:underline hover:underline-offset-4"
-            href="/signup"
+            href="./signup"
           >
             Signup
           </a>
