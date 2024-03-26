@@ -34,14 +34,14 @@ const Signup = () => {
     <div className=' mb-10 border border-solid rounded'>
       <h2 className=' mt-6 mb-6 text-center text-xl text-white font-extrabold'> Login </h2>
       <form onSubmit={handleSubmit}>
-      <input className='text-sm mb-4 w-full px-4 py-2 border border-solid border-white rounded'
+      <input className='text-sm text-black mb-4 w-full px-4 py-2 border border-solid border-white rounded'
       type='text' 
       placeholder='email'
       value={email}
       onChange={(e) => setEmail(e.target.value)}
       required
       />
-      <input className='text-sm mb-4 w-full px-4 py-2 border border-solid border-white rounded'
+      <input className='text-sm text-black mb-4 w-full px-4 py-2 border border-solid border-white rounded'
       type='text' 
       placeholder='password'
       value={password}

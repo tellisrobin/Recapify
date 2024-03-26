@@ -20,7 +20,7 @@ const Home = () => {
          setIsLoading(false);
      }, []); 
     return (
-        <div>
+        <div> 
         {isLoading ? (
                 <div></div>
             ) : (
